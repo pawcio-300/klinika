@@ -1,0 +1,80 @@
+\documentclass[12pt,a4paper]{article}
+
+% Pakieki do obsługi języka polskiego i kodowania
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+% Dodatkowe pakiety zwiększające czytelność dokumentu
+\usepackage{geometry}
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx} % Pakiet wymagany do wklejania obrazków (np. JPG, PNG)
+
+% Konfiguracja wyglądu bloków kodu źródłowego
+\lstset{
+    language=[LaTeX]TeX,
+    backgroundcolor=\color{gray!10},
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{gray!30}
+}
+
+\title{Dokumentacja Projektu:\\System Zarządzania Kliniką Weterynaryjną}
+\author{Zespół Projektowy (2 osoby)}
+\date{\today}
+
+\begin{document}
+\section{Opis celu projektu}
+
+\subsection{Problem, który rozwiązuje program}
+Głównym celem projektu jest zastąpienie tradycyjnej, papierowej dokumentacji medycznej w gabinecie weterynaryjnym formą cyfrową. Program pozwala na szybkie rejestrowanie zwierząt i prowadzenie przejrzystej historii ich wizyt.
+
+\subsection{Adresaci oprogramowania}
+Program skierowany jest do:
+\begin{itemize}
+    \item Lekarzy weterynarii oraz personelu pomocniczego w małych i średnich lecznicach dla zwierząt,
+    \item Studentów medycyny weterynaryjnej poszukujących prostego narzędzia do symulacji prowadzenia kartotek medycznych.
+\end{itemize}
+
+\subsection{Główne funkcjonalności}
+Aplikacja została zaprojektowana w modelu obiektowym, oferując następujące możliwości:
+\begin{enumerate}
+    \item \textbf{Rejestracja pacjenta:} Dodawanie nowego zwierzęcia do bazy wraz z określeniem jego unikalnego imienia, gatunku, wieku oraz danych opiekuna.
+    \item \textbf{Zarządzanie wizytami i kompozycja procedur:} Możliwość rejestracji wizyt lekarskich, gdzie pod jedną wizytę personel może przypisać nieskończenie wiele procedur medycznych.
+    \item \textbf{Przegląd kartoteki (Historia wizyt):} Wyświetlanie szczegółowego wykazu wizyt oraz zabiegów dla konkretnego zwierzęcia, na podstawie wyszukania jego imienia.
+    \item \textbf{Trwałość danych (Zapis/Odczyt):} Manualny zapis struktury powiązań obiektowych do pliku \texttt{dane\_kliniki.txt} przy użyciu systemu znaczników.
+\end{enumerate}
+
+
+% --- NOWA SEKCJA JAKO ODDZIELNY PODPUNKT ---
+\newpage
+\section{Diagram klas UML}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{diagram.jpg} % Szerokość dopasowana do 80% obszaru tekstu
+    \label{fig:diagram_klas_uml}
+\end{figure}
+\newpage
+% -------------------------------------------
+
+
+\section{Instrukcja obsługi (Menu główne)}
+
+Po uruchomieniu aplikacji w oknie konsoli pojawi się interaktywne menu tekstowe. Nawigacja odbywa się poprzez wpisanie cyfry od 1 do 6 i zatwierdzenie klawiszem \texttt{Enter}:
+\begin{itemize}
+    \item \textbf{Opcja 1:} Pozwala zarejestrować zwierzę. Jeśli wprowadzony wiek nie będzie liczbą całkowitą dodatnią, program poprosi o poprawienie danych.
+    \item \textbf{Opcja 2:} Służy do zapisu nowej wizyty. Najpierw podaj imię zarejestrowanego pacjenta. Następnie wpisz nazwisko lekarza oraz datę. Program uruchomi wewnętrzną pętlę, pytając o dane kolejnych procedur. Wpisanie litery \texttt{t} dodaje kolejną procedurę, natomiast każda inna odpowiedź kończy edycję wizyty.
+    \item \textbf{Opcja 3:} Wyświetla pełną historię leczenia wybranego zwierzaka.
+\item \textbf{Opcja 4:} Zapisuje aktualne dane pacjentów, ich wizyt oraz procedur do pliku tekstowego, dzięki czemu nie znikną one po wyłączeniu programu.
+    \item \textbf{Opcja 5:} Wczytuje wcześniej zapisane dane z pliku tekstowego z powrotem do programu.
+    \item \textbf{Opcja 6:} Bezpiecznie zamyka aplikację.
+\end{itemize}
+
+
+\end{document}
